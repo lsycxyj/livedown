@@ -11,6 +11,8 @@ var markdownIt = require('markdown-it')
 var markdownItTaskCheckbox = require('markdown-it-task-checkbox')
 var markdownItEmoji = require('markdown-it-emoji')
 var markdownItGitHubHeadings = require('markdown-it-github-headings')
+var markdownItTexMath = require('markdown-it-texmath')
+var katex = require('katex')
 
 var md = markdownIt({
   html: true,
@@ -20,6 +22,9 @@ md.use(markdownItTaskCheckbox)
 md.use(markdownItEmoji)
 md.use(markdownItGitHubHeadings, {
   prefix: ''
+})
+md.use(markdownItTexMath.use(katex), {
+  delimiters: 'dollars'
 })
 
 var app = express()
